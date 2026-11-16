@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101713">
+<meta name="description" content="Your 8-week bodyweight strength, muscle and fitness tracker.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<title>HomeBody — Your Training</title>
+<style>
+:root{color-scheme:dark;--bg:#101713;--panel:#19231d;--panel2:#202d25;--line:#304137;--text:#f3f6f1;--muted:#a7b5aa;--lime:#c5f36a;--lime2:#a7d94c;--orange:#ffb36b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#2c4935 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:0 0 env(safe-area-inset-bottom)}
+.wrap{max-width:720px;margin:auto;padding:20px 16px 44px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}.brand{font-weight:900;letter-spacing:.04em;font-size:14px}.brand span{color:var(--lime)}.tag{font-size:11px;color:var(--lime);border:1px solid #607b3e;padding:5px 9px;border-radius:30px}
+h1{font-size:clamp(30px,8vw,44px);line-height:1.02;letter-spacing:-.05em;margin:8px 0 10px}.sub{color:var(--muted);margin:0 0 20px;max-width:480px}.hero{background:linear-gradient(135deg,#273b2b,#19241d 70%);border:1px solid #3c5540;border-radius:24px;padding:22px;margin-bottom:16px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:180px;height:180px;border:1px solid #536d45;border-radius:50%;right:-65px;top:-65px;box-shadow:0 0 0 20px #ffffff05,0 0 0 42px #ffffff04}.hero small{color:var(--lime);font-weight:800;letter-spacing:.12em;text-transform:uppercase}.hero h2{font-size:22px;margin:8px 0 5px}.hero p{color:#c1cec1;margin:0 0 17px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{background:#10191388;border:1px solid #ffffff16;border-radius:13px;padding:10px}.stat b{display:block;font-size:21px;color:var(--lime)}.stat span{font-size:11px;color:var(--muted)}
+.tabs{display:flex;gap:8px;overflow:auto;padding:3px 0 12px;scrollbar-width:none}.tabs button,.daybtn{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:30px;padding:9px 14px;font-weight:700;white-space:nowrap}.tabs button.active,.daybtn.active{background:var(--lime);border-color:var(--lime);color:#172012}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin:10px 0}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.sectionhead h3{margin:0;font-size:17px}.muted{color:var(--muted)}.tiny{font-size:12px;color:var(--muted)}.dayrow{display:flex;gap:8px;overflow:auto;padding-bottom:4px}.daybtn{flex:1;min-width:82px;border-radius:12px;padding:10px 8px}.daybtn span{display:block;font-size:11px;font-weight:500;opacity:.8}
+.progress{height:8px;background:#314036;border-radius:20px;overflow:hidden;margin:10px 0}.progress i{display:block;height:100%;background:var(--lime);width:0;transition:width .2s}
+.group{margin:16px 0 8px;color:var(--lime);font-size:11px;font-weight:900;letter-spacing:.13em;text-transform:uppercase}.exercise{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #ffffff0d}.exercise:last-child{border-bottom:0}.check{appearance:none;flex:none;width:23px;height:23px;border:1.5px solid #637568;border-radius:7px;margin:1px 0 0;background:transparent;display:grid;place-items:center}.check:checked{background:var(--lime);border-color:var(--lime)}.check:checked:after{content:"✓";color:#182113;font-weight:900}.exmain{flex:1;min-width:0}.exname{font-weight:750}.exmeta{font-size:12px;color:var(--muted);margin-top:3px}.exnote{font-size:12px;color:#c4d0c6;margin-top:5px}.pill{font-size:10px;color:var(--lime);border:1px solid #607b3e;border-radius:20px;padding:3px 7px;white-space:nowrap}
+button{font:inherit;cursor:pointer}.primary{background:var(--lime);color:#182113;border:0;border-radius:13px;padding:12px 16px;font-weight:900}.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line);border-radius:12px;padding:10px 13px;font-weight:700}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.warm{display:grid;grid-template-columns:1fr 1fr;gap:8px}.warm div{background:var(--panel2);border-radius:10px;padding:9px 10px;font-size:13px}.weekgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.week{background:var(--panel2);padding:12px 8px;border-radius:12px;text-align:center}.week b{display:block;font-size:18px}.week span{font-size:10px;color:var(--muted)}
+.footer{text-align:center;color:var(--muted);font-size:11px;margin:24px 8px}.hidden{display:none!important}.notice{background:#382b1d;border:1px solid #6c5030;color:#ffd3a6;border-radius:12px;padding:11px 13px;font-size:12px;margin-top:12px}
+@media(min-width:600px){.wrap{padding-top:30px}.hero{padding:28px}.card{padding:20px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><div class="brand">HOME<span>BODY</span> / TRAINING LOG</div><div class="tag">8-WEEK PLAN</div></div>
+  <section class="hero">
+    <small>Consistency over intensity</small>
+    <h1>Build strength.<br>One session at a time.</h1>
+    <p>Your bodyweight plan for muscle, strength and better conditioning — built around your current 1 pull-up and 15 push-ups.</p>
+    <div class="stats">
+      <div class="stat"><b>3×</b><span>Strength / week</span></div>
+      <div class="stat"><b>40–45</b><span>Minutes / session</span></div>
+      <div class="stat"><b>8</b><span>Weeks</span></div>
+    </div>
+  </section>
+
+  <div class="tabs" role="tablist">
+    <button class="active" data-tab="workout">Workout</button>
+    <button data-tab="plan">8-week plan</button>
+    <button data-tab="guide">Guidelines</button>
+  </div>
+
+  <main id="workout">
+    <section class="card">
+      <div class="sectionhead"><h3>Choose your training day</h3><span class="tiny" id="dateLabel"></span></div>
+      <div class="dayrow">
+        <button class="daybtn active" data-day="Monday">MON<span>Strength</span></button>
+        <button class="daybtn" data-day="Wednesday">WED<span>Strength</span></button>
+        <button class="daybtn" data-day="Friday">FRI<span>Strength</span></button>
+      </div>
+      <div class="sectionhead" style="margin:18px 0 0"><h3 id="sessionTitle">Monday · Full body</h3><span class="tiny" id="count">0 / 12 done</span></div>
+      <div class="progress"><i id="bar"></i></div>
+      <div id="exerciseList"></div>
+      <div class="actions">
+        <button class="primary" id="finishBtn">Finish session</button>
+        <button class="secondary" id="resetBtn">Reset checks</button>
+      </div>
+      <div class="tiny" id="savedMsg" style="margin-top:10px">Progress is saved on this device.</div>
+    </section>
+    <section class="card">
+      <div class="sectionhead"><h3>Warm-up · 5 min</h3><span class="pill">Before every session</span></div>
+      <div class="warm">
+        <div>Jumping jacks · 45 sec</div><div>Arm circles · 30 sec</div>
+        <div>Hip rotations · 30 sec</div><div>Bodyweight squats · 15</div>
+        <div>Light lunges · 10</div><div>Shoulder rotations · 30 sec</div>
+      </div>
+      <div class="notice">Use only a securely installed, weight-rated pull-up bar. Never hang from roof beams or uncertain structures. Stop if you feel sharp pain, dizziness or unusual shortness of breath.</div>
+    </section>
+  </main>
+
+  <main id="plan" class="hidden">
+    <section class="card">
+      <div class="sectionhead"><h3>Your progression milestones</h3><span class="pill">Targets, not guarantees</span></div>
+      <div class="weekgrid">
+        <div class="week"><b>1–2</b><span>Learn form</span></div>
+        <div class="week"><b>3–4</b><span>Add reps</span></div>
+        <div class="week"><b>5–6</b><span>Build control</span></div>
+        <div class="week"><b>7–8</b><span>Review progress</span></div>
+      </div>
+    </section>
+    <section class="card">
+      <h3 style="margin-top:0">Strength targets</h3>
+      <p class="tiny">Increase only when every rep is controlled and you still have about 1–2 good reps left.</p>
+      <div class="exercise"><div class="exmain"><b>Pull-ups</b><div class="exmeta">Start: 4 × 1 clean rep · Goal: work toward 4 × 3</div></div></div>
+      <div class="exercise"><div class="exmain"><b>Push-ups</b><div class="exmeta">Start: 3 × 8–10 · Goal: 3 × 15</div></div></div>
+      <div class="exercise"><div class="exmain"><b>Pike push-ups</b><div class="exmeta">Start: 2 × 6–8 · Goal: 2 × 12</div></div></div>
+      <div class="exercise"><div class="exmain"><b>Squats</b><div class="exmeta">Start: 3 × 15 · Goal: 3 × 25</div></div></div>
+      <div class="exercise"><div class="exmain"><b>Bulgarian split squats</b><div class="exmeta">Start: 2 × 8 / leg · Goal: 2 × 12 / leg</div></div></div>
+      <div class="exercise"><div class="exmain"><b>Plank</b><div class="exmeta">Start: 30–40 sec · Goal: 60 sec</div></div></div>
+    </section>
+    <section class="card">
+      <h3 style="margin-top:0">Weekly rhythm</h3>
+      <p>MON · Full body</p><p>TUE · 25–30 min brisk walk</p><p>WED · Full body</p><p>THU · Walking / recovery</p><p>FRI · Full body</p><p>SAT · 30–45 min walk</p><p>SUN · Rest</p>
+    </section>
+  </main>
+
+  <main id="guide" class="hidden">
+    <section class="card">
+      <h3 style="margin-top:0">Training rules</h3>
+      <p><b>Rest:</b> 60–90 sec after pull-ups and demanding sets; 30–60 sec for easier exercises.</p>
+      <p><b>Effort:</b> Avoid training to failure every set. Keep 1–2 reps in reserve.</p>
+      <p><b>Progress:</b> Add 1 rep at a time, or slow the lowering phase, when the current target feels manageable.</p>
+      <p><b>Recovery:</b> Keep at least one day between strength sessions. Sleep 7–9 hours.</p>
+      <p><b>Fat loss:</b> Ab exercises strengthen your core but do not selectively burn belly fat. Overall fat loss requires a sustainable calorie deficit.</p>
+    </section>
+    <section class="card">
+      <h3 style="margin-top:0">Food basics</h3>
+      <p>Include protein in each meal: eggs, milk, curd, paneer, dal, beans, soy or chicken.</p>
+      <p>Eat vegetables, fruit and enough carbohydrates to support training. Avoid crash diets.</p>
+      <p class="tiny">A common muscle-building protein range for healthy adults who strength train is around 1.6–2.0 g per kg of body weight per day. Personal needs vary.</p>
+    </section>
+    <section class="card">
+      <h3 style="margin-top:0">Cool-down · 3 min</h3>
+      <p>Gentle hamstring stretch · chest stretch · quad stretch · shoulder stretch. Do not force any stretch.</p>
+    </section>
+  </main>
+  <div class="footer">HOME BODY · Your training log stays on this device. Add this page to your home screen for quick access.</div>
+</div>
+<script>
+const plan = [
+ {group:"UPPER BODY",items:[
+  ["Pull-ups","4 × 1 rep","Rest 90 sec. Clean singles; do not force failed reps.","Strength"],
+  ["Push-ups","3 × 8–10 reps","Keep 1–2 good reps in reserve.","Strength"],
+  ["Pike push-ups","2 × 6–8 reps","Use a comfortable range; keep your head and neck controlled.","Shoulders"],
+  ["Scapular pull-ups","2 × 8 reps","Small controlled shoulder-blade movement; no swinging.","Back"]
+ ]},
+ {group:"LOWER BODY",items:[
+  ["Bodyweight squats","3 × 15 reps","Controlled depth; knees track in line with toes.","Legs"],
+  ["Bulgarian split squats","2 × 8 each leg","Use a stable support; reduce depth if balance is difficult.","Legs"],
+  ["Glute bridges","2 × 15 reps","Pause briefly at the top without over-arching your back.","Glutes"],
+  ["Hamstring walkouts","2 × 6 reps","Move slowly; shorten the range if hamstrings cramp.","Hamstrings"]
+ ]},
+ {group:"CORE",items:[
+  ["Plank","2 × 30–40 sec","Keep ribs down and body in a straight line.","Core"],
+  ["Dead bugs","2 × 10 each side","Keep lower back gently supported against the floor.","Core"],
+  ["Reverse crunches","2 × 12 reps","Curl pelvis gently; avoid swinging your legs.","Core"],
+  ["Mountain climbers","2 × 20 total reps","Move under control; keep hips steady.","Conditioning"]
+ ]}
+];
+let day="Monday";
+let checks=JSON.parse(localStorage.getItem("hb-checks")||"{}");
+let completions=JSON.parse(localStorage.getItem("hb-completions")||"{}");
+const key=()=>day;
+function render(){
+ document.getElementById("sessionTitle").textContent=day+" · Full body";
+ const root=document.getElementById("exerciseList");root.innerHTML="";
+ let idx=0,done=0,total=plan.reduce((n,g)=>n+g.items.length,0);
+ plan.forEach(g=>{
+  const h=document.createElement("div");h.className="group";h.textContent=g.group;root.appendChild(h);
+  g.items.forEach(item=>{
+   const id=day+"-"+idx++,checked=!!(checks[key()]||{})[id];if(checked)done++;
+   const row=document.createElement("label");row.className="exercise";
+   row.innerHTML=`<input class="check" type="checkbox" ${checked?"checked":""}><span class="exmain"><span class="exname">${item[0]}</span><div class="exmeta">${item[1]}</div><div class="exnote">${item[2]}</div></span><span class="pill">${item[3]}</span>`;
+   row.querySelector("input").addEventListener("change",e=>{
+    checks[key()]??={};checks[key()][id]=e.target.checked;localStorage.setItem("hb-checks",JSON.stringify(checks));render();
+   });
+   root.appendChild(row);
+  });
+ });
+ document.getElementById("count").textContent=done+" / "+total+" done";
+ document.getElementById("bar").style.width=(done/total*100)+"%";
+ document.getElementById("savedMsg").textContent=completions[day]?"Last marked complete: "+completions[day]:"Progress is saved on this device.";
+}
+document.querySelectorAll(".daybtn").forEach(b=>b.addEventListener("click",()=>{
+ day=b.dataset.day;document.querySelectorAll(".daybtn").forEach(x=>x.classList.toggle("active",x===b));render();
+}));
+document.getElementById("resetBtn").addEventListener("click",()=>{if(confirm("Clear the checks for "+day+"?")){checks[day]={};localStorage.setItem("hb-checks",JSON.stringify(checks));render();}});
+document.getElementById("finishBtn").addEventListener("click",()=>{
+ const done=Object.values(checks[day]||{}).filter(Boolean).length;
+ if(done<12&&!confirm("You have completed "+done+" of 12 exercises. Mark this session complete anyway?"))return;
+ completions[day]=new Date().toLocaleDateString();localStorage.setItem("hb-completions",JSON.stringify(completions));render();
+});
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>{
+ document.querySelectorAll("[data-tab]").forEach(x=>x.classList.toggle("active",x===b));
+ ["workout","plan","guide"].forEach(id=>document.getElementById(id).classList.toggle("hidden",id!==b.dataset.tab));
+}));
+document.getElementById("dateLabel").textContent=new Date().toLocaleDateString(undefined,{month:"short",day:"numeric"});
+render();
+if("serviceWorker" in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script>
+</body></html>
